@@ -38,7 +38,7 @@ function formatYoutubeLink(url) {
 // 3. ADMIN LOGIC (Managing Classes)
 // ==========================================
 async function addStudent() {
-    const email = document.getElementById('sEmail').value;
+    const username = document.getElementById('sUsername').value;
     const pass = document.getElementById('sPass').value;
     const course = document.getElementById('sCourse').value;
     const rawVideo = document.getElementById('sVideoLink').value;
@@ -47,7 +47,7 @@ async function addStudent() {
     // Convert the link to embed format
     const videoEmbed = formatYoutubeLink(rawVideo);
 
-    if(!email || !pass || !rawVideo) {
+    if(!username || !pass || !rawVideo) {
         alert("Please fill in all fields before submitting.");
         return;
     }
@@ -81,10 +81,10 @@ async function addStudent() {
 // 4. STUDENT LOGIC (Dashboard)
 // ==========================================
 function login() {
-    const email = document.getElementById('lEmail').value;
+    const username = document.getElementById('lUsername').value;
     const pass = document.getElementById('lPass').value;
 
-    auth.signInWithEmailAndPassword(email, pass)
+    auth.signInWithEmailAndPassword(username, pass)
     .then((cred) => {
         // Hide Login UI and show Dashboard
         document.getElementById('loginView').style.display = 'none';
