@@ -1,0 +1,54 @@
+:root {
+    --primary: #630665; /* SkillBee Purple */
+    --secondary: #008080; /* Teal */
+    --bg: #f8f9fa;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use Batangas if you have the file */
+    background-color: var(--bg);
+    margin: 0;
+}
+
+.navbar {
+    background: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo { color: var(--primary); font-size: 1.8rem; font-weight: bold; }
+
+.container { padding: 40px 5%; }
+
+.course-card, .clean-box {
+    background: white;
+    border-radius: 20px; /* Rounded borders */
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.btn {
+    padding: 12px 25px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-enroll { background: var(--secondary); color: white; }
+.btn-access { background: var(--primary); color: white; }
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
