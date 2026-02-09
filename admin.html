@@ -1,28 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>SkillBee | Admin</title>
+    <meta charset="UTF-8">
+    <title>SkillBee | Admin Access</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="clean-box">
-            <h2>Admin: Add New Student</h2>
-            <input type="email" id="studentEmail" placeholder="Student Email" class="input-field">
-            <input type="password" id="studentPass" placeholder="Set Password" class="input-field">
-            
-            <h4>Assign Course:</h4>
-            <select id="courseSelect" class="input-field">
-                <option value="graphic_online">3 Month AI Graphic Design</option>
-                <option value="resin_online">10 Days Resin Art</option>
-            </select>
-            
-            <button onclick="createStudent()" class="btn btn-access">Register Student</button>
-        </div>
+    <nav class="navbar">
+        <div class="logo">SkillBee Admin</div>
+        <a href="index.html" class="btn btn-access">View Website</a>
+    </nav>
+
+    <div class="form-box" style="max-width: 600px;">
+        <h2 style="color: var(--primary); margin-bottom: 20px;">Manage Student Access</h2>
+        
+        <label>Student Credentials</label>
+        <input type="email" id="sEmail" placeholder="Student Email Address">
+        <input type="password" id="sPass" placeholder="Set Secure Password">
+        
+        <label>Course Assignment</label>
+        <select id="sCourse">
+            <option value="3 Month Online AI Graphic Design">3 Month Online AI Graphic Design</option>
+            <option value="2 Month Offline AI Graphic Design">2 Month Offline AI Graphic Design</option>
+            <option value="10 Days Online Resin Art">10 Days Online Resin Art</option>
+            <option value="15 Days Online Art and Craft">15 Days Online Art and Craft</option>
+            <option value="2 Days Offline Resin Art">2 Days Offline Resin Art</option>
+        </select>
+
+        <label>Class Content (YouTube Link)</label>
+        <input type="text" id="sVideoLink" placeholder="Paste YouTube Link (e.g., https://youtu.be/...)">
+        
+        <label>Class Notes / Instructions</label>
+        <textarea id="sNotes" placeholder="Enter class notes or description here..." style="width:100%; height:100px; border-radius:12px; padding:10px; border:1px solid #ddd;"></textarea>
+        
+        <button onclick="addStudent()" class="btn btn-access" style="width:100%; margin-top:20px;">Activate Student & Class</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
