@@ -2,43 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SkillBee | Admin Access</title>
+    <title>SkillBee | Admin Master Control</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo">SkillBee Admin</div>
-        <a href="index.html" class="btn btn-access">View Website</a>
-    </nav>
-
-    <div class="form-box" style="max-width: 600px;">
-        <h2 style="color: var(--primary); margin-bottom: 20px;">Manage Student Access</h2>
-        
-        <label>Student Credentials</label>
-        <input type="username" id="sUsername" placeholder="Student Username">
-        <input type="password" id="sPass" placeholder="Set Secure Password">
-        
-        <label>Course Assignment</label>
-        <select id="sCourse">
-            <option value="3 Month Online AI Graphic Design">3 Month Online AI Graphic Design</option>
-            <option value="2 Month Offline AI Graphic Design">2 Month Offline AI Graphic Design</option>
-            <option value="10 Days Online Resin Art">10 Days Online Resin Art</option>
-            <option value="15 Days Online Art and Craft">15 Days Online Art and Craft</option>
-            <option value="2 Days Offline Resin Art">2 Days Offline Resin Art</option>
-        </select>
-
-        <label>Class Content (YouTube Link)</label>
-        <input type="text" id="sVideoLink" placeholder="Paste YouTube Link (e.g., https://youtu.be/...)">
-        
-        <label>Class Notes / Instructions</label>
-        <textarea id="sNotes" placeholder="Enter class notes or description here..." style="width:100%; height:100px; border-radius:12px; padding:10px; border:1px solid #ddd;"></textarea>
-        
-        <button onclick="addStudent()" class="btn btn-access" style="width:100%; margin-top:20px;">Activate Student & Class</button>
+    <div id="adminLock" class="form-box">
+        <h2 style="color: var(--primary);">Admin Security</h2>
+        <input type="password" id="masterPass" placeholder="Enter Master Password">
+        <button onclick="checkAdminPass()" class="btn btn-access" style="width: 100%;">Unlock</button>
     </div>
 
+    <div id="adminContent" style="display: none;">
+        <nav class="navbar">
+            <div class="logo">SkillBee Manager</div>
+            <div>
+                <button onclick="showTab('studentsTab')" class="btn btn-access">Manage Students</button>
+                <button onclick="showTab('classesTab')" class="btn btn-enroll">Upload Classes</button>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div id="studentsTab" class="tab-content">
+                <div class="form-box">
+                    <h3>Register New Student</h3>
+                    <input type="username" id="sUsername" placeholder="Student Username">
+                    <input type="password" id="sPass" placeholder="Set Password">
+                    <select id="sCourse">
+                        <option value="graphic_online">3 Month AI Graphic Design</option>
+                        <option value="resin_online">10 Days Resin Art</option>
+                        </select>
+                    <button onclick="addStudent()" class="btn btn-access" style="width:100%;">Create Account</button>
+                </div>
+            </div>
+
+            <div id="classesTab" class="tab-content" style="display:none;">
+                <div class="form-box" style="max-width: 700px;">
+                    <h3>Upload Class Content</h3>
+                    <select id="uploadCourseSelect">
+                        <option value="graphic_online">3 Month AI Graphic Design</option>
+                        <option value="resin_online">10 Days Resin Art</option>
+                    </select>
+                    <input type="text" id="classTitle" placeholder="Class Title (e.g. Lesson 1: Introduction)">
+                    <input type="text" id="vLink" placeholder="YouTube Video Link">
+                    <textarea id="classNotes" placeholder="Write class notes here..."></textarea>
+                    <input type="text" id="pdfLink" placeholder="PDF Resource Link (Google Drive/Dropbox)">
+                    <button onclick="uploadClass()" class="btn btn-enroll" style="width:100%;">Add Class to Course</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
